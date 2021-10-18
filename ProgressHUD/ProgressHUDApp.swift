@@ -15,7 +15,7 @@ struct ProgressHUDApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ProgressHUD($hudVisible, config: hudConfig)
+            ProgressHUD(isVisible: $hudVisible, config: hudConfig)
         }
     }
 }

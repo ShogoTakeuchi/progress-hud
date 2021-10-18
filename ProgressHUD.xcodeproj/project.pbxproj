@@ -13,7 +13,7 @@
 		29796F3E271D41AD008960D5 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F3D271D41AD008960D5 /* ProgressHUD.swift */; };
 		29796F40271D41FC008960D5 /* ProgressHUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */; };
 		29796F43271D42BD008960D5 /* SwiftUIVisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 29796F42271D42BD008960D5 /* SwiftUIVisualEffects */; };
-		29796F45271D4353008960D5 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F44271D4353008960D5 /* CGSizeExtension.swift */; };
+		29796F48271D4D58008960D5 /* ProgressHUDType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F47271D4D58008960D5 /* ProgressHUDType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		29796F36271D3EC6008960D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29796F3D271D41AD008960D5 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDConfig.swift; sourceTree = "<group>"; };
-		29796F44271D4353008960D5 /* CGSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
+		29796F47271D4D58008960D5 /* ProgressHUDType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				29796F46271D4594008960D5 /* Assets */,
-				29796F44271D4353008960D5 /* CGSizeExtension.swift */,
 				29796F3D271D41AD008960D5 /* ProgressHUD.swift */,
 				29796F2F271D3EC4008960D5 /* ProgressHUDApp.swift */,
 				29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */,
+				29796F47271D4D58008960D5 /* ProgressHUDType.swift */,
 			);
 			path = ProgressHUD;
 			sourceTree = "<group>";
@@ -151,8 +151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29796F48271D4D58008960D5 /* ProgressHUDType.swift in Sources */,
 				29796F30271D3EC4008960D5 /* ProgressHUDApp.swift in Sources */,
-				29796F45271D4353008960D5 /* CGSizeExtension.swift in Sources */,
 				29796F40271D41FC008960D5 /* ProgressHUDConfig.swift in Sources */,
 				29796F3E271D41AD008960D5 /* ProgressHUD.swift in Sources */,
 			);

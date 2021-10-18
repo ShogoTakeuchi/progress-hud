@@ -8,56 +8,133 @@
 import SwiftUI
 import SwiftUIVisualEffects
 
-public enum ProgressHUDType {
-    case loading
-    case success
-    case warning
-    case error
+struct ProgressHUD: View {
+
+    @Binding var isVisible: Bool
+    var config: ProgressHUDConfig
+
+    var body: some View {
+        let hideTimer = Timer.publish(
+            every: config.autoHideInterval,
+            on: .main,
+            in: .common
+        ).autoconnect()
+        GeometryReader { geometry in
+            ZStack {
+                if isVisible {
+                    config.backgroundColor.edgesIgnoringSafeArea(.all)
+                    ZStack {
+                        Color.white.blurEffect().blurEffectStyle(.systemChromeMaterial)
+                        VStack(spacing: 16) {
+                            if config.type == .loading {
+                                IndefiniteAnimatedView(
+                                    animatedViewSize: config.imageViewSize,
+                                    animatedViewForegroundColor: config.imageViewForegroundColor,
+                                    lineWidth: config.lineWidth
+                                )
+                            } else {
+                                ImageView(
+                                    type: config.type,
+                                    imageViewSize: config.imageViewSize,
+                                    imageViewForegroundColor: config.imageViewForegroundColor,
+                                    successImage: config.successImage,
+                                    warningImage: config.warningImage,
+                                    errorImage: config.errorImage
+                                )
+                            }
+                            if config.title != nil || config.caption != nil {
+                                LabelView(title: config.title, caption: config.caption)
+                            }
+                        }.padding()
+                    }
+                    .cornerRadius(config.cornerRadius)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: config.cornerRadius)
+                            .stroke(config.borderColor, lineWidth: config.borderWidth)
+                    )
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding(geometry.size.width / 3)
+                    .shadow(color: config.shadowColor, radius: config.shadowRadius)
+                }
+            }
+            .animation(.spring())
+            .onTapGesture {
+                if config.allowsTapToHide {
+                    withAnimation {
+                        isVisible = false
+                    }
+                }
+            }
+            .onReceive(hideTimer) { _ in
+                if config.shouldAutoHide {
+                    withAnimation {
+                        isVisible = false
+                    }
+                }
+                hideTimer.upstream.connect().cancel()
+            }
+            .onAppear {
+                if config.hapticsEnabled {
+                    generateHapticNotification(for: config.type)
+                }
+            }
+        }
+    }
+    
+    func generateHapticNotification(for type: ProgressHUDType) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.prepare()
+        switch type {
+        case .success:
+            generator.notificationOccurred(.success)
+        case .warning:
+            generator.notificationOccurred(.warning)
+        case .error:
+            generator.notificationOccurred(.error)
+        default:
+            return
+        }
+    }
 }
 
 private struct IndefiniteAnimatedView: View {
-    var animatedViewSize: CGSize
-    var animatedViewForegroundColor: Color
-    
-    var lineWidth: CGFloat
+    let animatedViewSize: CGSize
+    let animatedViewForegroundColor: Color
+    let lineWidth: CGFloat
     
     @State private var isAnimating = false
     
     private var foreverAnimation: Animation {
-        Animation.linear(duration: 2.0)
-            .repeatForever(autoreverses: false)
+        Animation.linear(duration: 2.0).repeatForever(autoreverses: false)
     }
     
     var body: some View {
         let gradient = Gradient(colors: [animatedViewForegroundColor, .clear])
         let radGradient = AngularGradient(gradient: gradient, center: .center, angle: .degrees(-5))
-        
         Circle()
             .trim(from: 0.0, to: 0.97)
             .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
             .fill(radGradient)
             .frame(width: animatedViewSize.width-lineWidth/2, height: animatedViewSize.height-lineWidth/2)
-            .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
-            .animation(self.isAnimating ? foreverAnimation : .default)
+            .rotationEffect(Angle(degrees: isAnimating ? 360 : 0.0))
+            .animation(isAnimating ? foreverAnimation : .default)
             .padding(lineWidth/2)
             .onAppear {
-                self.isAnimating = true
+                isAnimating = true
             }
             .onDisappear {
-                self.isAnimating = false
+                isAnimating = false
             }
     }
 }
 
 private struct ImageView: View {
-    var type: ProgressHUDType
-    
-    var imageViewSize: CGSize
-    var imageViewForegroundColor: Color
-    
-    var successImage: String
-    var warningImage: String
-    var errorImage: String
+    let type: ProgressHUDType
+    let imageViewSize: CGSize
+    let imageViewForegroundColor: Color
+    let successImage: String
+    let warningImage: String
+    let errorImage: String
     
     var body: some View {
         imageForHUDType?
@@ -81,8 +158,8 @@ private struct ImageView: View {
 }
 
 private struct LabelView: View {
-    var title: String?
-    var caption: String?
+    let title: String?
+    let caption: String?
     
     var body: some View {
         VStack(spacing: 4) {
@@ -102,118 +179,5 @@ private struct LabelView: View {
         .multilineTextAlignment(.center)
         .vibrancyEffect()
         .vibrancyEffectStyle(.fill)
-    }
-}
-
-struct ProgressHUD: View {
-    @Binding var isVisible: Bool
-    var config: ProgressHUDConfig
-    
-    @Environment(\.colorScheme) private var colorScheme
-    
-    init(_ isVisible: Binding<Bool>, config: ProgressHUDConfig) {
-        self._isVisible = isVisible
-        self.config = config
-    }
-    
-    public init(
-        _ isVisible: Binding<Bool>,
-        title: String?          = nil,
-        caption: String?        = nil,
-        type: ProgressHUDType = .loading
-    ) {
-        self._isVisible = isVisible
-        self.config = ProgressHUDConfig(
-            type: type,
-            title: title,
-            caption: caption
-        )
-    }
-    
-    public var body: some View {
-        let hideTimer = Timer.publish(every: config.autoHideInterval, on: .main, in: .common).autoconnect()
-        
-        GeometryReader { geometry in
-            ZStack {
-                if isVisible {
-                    config.backgroundColor
-                        .edgesIgnoringSafeArea(.all)
-                    
-                    ZStack {
-                        Color.white
-                            .blurEffect()
-                            .blurEffectStyle(.systemChromeMaterial)
-                        
-                        VStack(spacing: 20) {
-                            if config.type == .loading {
-                                IndefiniteAnimatedView(
-                                    animatedViewSize: config.imageViewSize,
-                                    animatedViewForegroundColor: config.imageViewForegroundColor,
-                                    lineWidth: config.lineWidth
-                                )
-                            } else {
-                                ImageView(
-                                    type: config.type,
-                                    imageViewSize: config.imageViewSize,
-                                    imageViewForegroundColor: config.imageViewForegroundColor,
-                                    successImage: config.successImage,
-                                    warningImage: config.warningImage,
-                                    errorImage: config.errorImage
-                                )
-                            }
-                            LabelView(title: config.title, caption: config.caption)
-                        }.padding()
-                    }
-                    .cornerRadius(config.cornerRadius)
-                    .overlay(
-                        // Fix required since .border can not be used with
-                        // RoundedRectangle clip shape
-                        RoundedRectangle(cornerRadius: config.cornerRadius)
-                            .stroke(config.borderColor, lineWidth: config.borderWidth)
-                    )
-                    .aspectRatio(1, contentMode: .fit)
-                    .padding(geometry.size.width / 7)
-                    .shadow(color: config.shadowColor, radius: config.shadowRadius)
-                }
-            }
-            .animation(.spring())
-            .onTapGesture {
-                if config.allowsTapToHide {
-                    withAnimation {
-                        isVisible = false
-                    }
-                }
-            }
-            .onReceive(hideTimer) { _ in
-                if config.shouldAutoHide {
-                    withAnimation {
-                        isVisible = false
-                    }
-                }
-                // Only one call required
-                hideTimer.upstream.connect().cancel()
-            }
-            .onAppear {
-                if config.hapticsEnabled {
-                    generateHapticNotification(for: config.type)
-                }
-            }
-        }
-    }
-    
-    func generateHapticNotification(for type: ProgressHUDType) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.prepare()
-        
-        switch type {
-        case .success:
-            generator.notificationOccurred(.success)
-        case .warning:
-            generator.notificationOccurred(.warning)
-        case .error:
-            generator.notificationOccurred(.error)
-        default:
-            return
-        }
     }
 }

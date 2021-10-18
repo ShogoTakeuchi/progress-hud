@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressHUDConfig: Hashable {
+struct ProgressHUDConfig {
     let type: ProgressHUDType
     let title: String?
     let caption: String?
@@ -21,39 +21,39 @@ struct ProgressHUDConfig: Hashable {
     let borderColor: Color
     let borderWidth: CGFloat
     let lineWidth: CGFloat
+    let shouldAutoHide: Bool
+    let allowsTapToHide: Bool
+    let autoHideInterval: TimeInterval
+    let hapticsEnabled: Bool
     let imageViewSize: CGSize
     let imageViewForegroundColor: Color
     let successImage: String
     let warningImage: String
     let errorImage: String
-    let shouldAutoHide: Bool
-    let allowsTapToHide: Bool
-    let autoHideInterval: TimeInterval
-    let hapticsEnabled: Bool
 
     public init(
         type: ProgressHUDType = .loading,
         title: String? = nil,
         caption: String? = nil,
-        minSize: CGSize = CGSize(width: 100.0, height: 100.0),
+        minSize: CGSize = CGSize(width: 60, height: 60),
         cornerRadius: CGFloat = 12.0,
-        backgroundColor: Color = .clear,
+        backgroundColor: Color = Color.black.opacity(0.3),
         titleForegroundColor: Color = .primary,
         captionForegroundColor: Color = .secondary,
         shadowColor: Color = .clear,
         shadowRadius: CGFloat = 0.0,
         borderColor: Color = .clear,
         borderWidth: CGFloat = 0.0,
-        lineWidth: CGFloat = 10.0,
-        imageViewSize: CGSize = CGSize(width: 100, height: 100),
-        imageViewForegroundColor: Color = .primary,
-        successImage: String = "checkmark.circle",
-        warningImage: String = "exclamationmark.circle",
-        errorImage: String = "xmark.circle",
+        lineWidth: CGFloat = 6.0,
         shouldAutoHide: Bool = false,
         allowsTapToHide: Bool = false,
         autoHideInterval: TimeInterval = 10.0,
-        hapticsEnabled: Bool = true
+        hapticsEnabled: Bool = true,
+        imageViewSize: CGSize = CGSize(width: 60, height: 60),
+        imageViewForegroundColor: Color = .primary,
+        successImage: String = "checkmark.circle",
+        warningImage: String = "exclamationmark.circle",
+        errorImage: String = "xmark.circle"
     ) {
         self.type = type
         self.title = title
@@ -68,14 +68,14 @@ struct ProgressHUDConfig: Hashable {
         self.borderColor = borderColor
         self.borderWidth = borderWidth
         self.lineWidth = lineWidth
+        self.shouldAutoHide = shouldAutoHide
+        self.allowsTapToHide = allowsTapToHide
+        self.autoHideInterval = autoHideInterval
+        self.hapticsEnabled = hapticsEnabled
         self.imageViewSize = imageViewSize
         self.imageViewForegroundColor = imageViewForegroundColor
         self.successImage = successImage
         self.warningImage = warningImage
         self.errorImage = errorImage
-        self.shouldAutoHide = shouldAutoHide
-        self.allowsTapToHide = allowsTapToHide
-        self.autoHideInterval = autoHideInterval
-        self.hapticsEnabled = hapticsEnabled
     }
 }
