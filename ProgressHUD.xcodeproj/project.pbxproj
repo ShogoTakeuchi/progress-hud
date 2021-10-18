@@ -12,7 +12,6 @@
 		29796F37271D3EC6008960D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29796F36271D3EC6008960D5 /* Preview Assets.xcassets */; };
 		29796F3E271D41AD008960D5 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F3D271D41AD008960D5 /* ProgressHUD.swift */; };
 		29796F40271D41FC008960D5 /* ProgressHUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */; };
-		29796F43271D42BD008960D5 /* SwiftUIVisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 29796F42271D42BD008960D5 /* SwiftUIVisualEffects */; };
 		29796F48271D4D58008960D5 /* ProgressHUDType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F47271D4D58008960D5 /* ProgressHUDType.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +30,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29796F43271D42BD008960D5 /* SwiftUIVisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +90,6 @@
 			);
 			name = ProgressHUD;
 			packageProductDependencies = (
-				29796F42271D42BD008960D5 /* SwiftUIVisualEffects */,
 			);
 			productName = ProgressHUD;
 			productReference = 29796F2C271D3EC4008960D5 /* ProgressHUD.app */;
@@ -123,7 +120,6 @@
 			);
 			mainGroup = 29796F23271D3EC4008960D5;
 			packageReferences = (
-				29796F41271D42BD008960D5 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
 			);
 			productRefGroup = 29796F2D271D3EC4008960D5 /* Products */;
 			projectDirPath = "";
@@ -357,25 +353,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		29796F41271D42BD008960D5 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		29796F42271D42BD008960D5 /* SwiftUIVisualEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29796F41271D42BD008960D5 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */;
-			productName = SwiftUIVisualEffects;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29796F24271D3EC4008960D5 /* Project object */;
 }

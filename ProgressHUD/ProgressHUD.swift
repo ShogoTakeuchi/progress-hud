@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUIVisualEffects
 
 struct ProgressHUD: View {
 
@@ -24,7 +23,7 @@ struct ProgressHUD: View {
                 if isVisible {
                     config.backgroundColor.edgesIgnoringSafeArea(.all)
                     ZStack {
-                        Color.white.blurEffect().blurEffectStyle(.systemChromeMaterial)
+                        Color.white
                         VStack(spacing: 16) {
                             if config.type == .loading {
                                 IndefiniteAnimatedView(
@@ -53,7 +52,7 @@ struct ProgressHUD: View {
                             .stroke(config.borderColor, lineWidth: config.borderWidth)
                     )
                     .aspectRatio(1, contentMode: .fit)
-                    .padding(geometry.size.width / 3)
+                    .padding(geometry.size.width / (config.title != nil || config.caption != nil ? 7 : 3))
                     .shadow(color: config.shadowColor, radius: config.shadowRadius)
                 }
             }
@@ -171,13 +170,11 @@ private struct LabelView: View {
             }
             if let caption = caption {
                 Text(caption)
-                    .lineLimit(2)
+                    .lineLimit(4)
                     .font(.headline)
                     .foregroundColor(.secondary)
             }
         }
         .multilineTextAlignment(.center)
-        .vibrancyEffect()
-        .vibrancyEffectStyle(.fill)
     }
 }
