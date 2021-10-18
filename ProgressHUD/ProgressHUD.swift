@@ -105,13 +105,13 @@ private struct LabelView: View {
     }
 }
 
-public struct ProgressHUD: View {
+struct ProgressHUD: View {
     @Binding var isVisible: Bool
     var config: ProgressHUDConfig
     
     @Environment(\.colorScheme) private var colorScheme
     
-    public init(_ isVisible: Binding<Bool>, config: ProgressHUDConfig) {
+    init(_ isVisible: Binding<Bool>, config: ProgressHUDConfig) {
         self._isVisible = isVisible
         self.config = config
     }

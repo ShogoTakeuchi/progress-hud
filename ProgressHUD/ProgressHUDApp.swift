@@ -11,7 +11,7 @@ import SwiftUI
 struct ProgressHUDApp: App {
 
     @State var hudVisible = true
-    @State var hudConfig = ProgressHUDConfig()
+    @State var hudConfig = ProgressHUDConfig(type: .loading)
 
     var body: some Scene {
         WindowGroup {
