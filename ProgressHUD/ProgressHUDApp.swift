@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct ProgressHUDApp: App {
+
+    @State var hudVisible = true
+    @State var hudConfig = ProgressHUDConfig()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProgressHUD($hudVisible, config: hudConfig)
         }
     }
 }

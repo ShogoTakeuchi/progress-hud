@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		29796F30271D3EC4008960D5 /* ProgressHUDApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F2F271D3EC4008960D5 /* ProgressHUDApp.swift */; };
-		29796F32271D3EC4008960D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F31271D3EC4008960D5 /* ContentView.swift */; };
 		29796F34271D3EC6008960D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29796F33271D3EC6008960D5 /* Assets.xcassets */; };
 		29796F37271D3EC6008960D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29796F36271D3EC6008960D5 /* Preview Assets.xcassets */; };
+		29796F3E271D41AD008960D5 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F3D271D41AD008960D5 /* ProgressHUD.swift */; };
+		29796F40271D41FC008960D5 /* ProgressHUDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */; };
+		29796F43271D42BD008960D5 /* SwiftUIVisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 29796F42271D42BD008960D5 /* SwiftUIVisualEffects */; };
+		29796F45271D4353008960D5 /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29796F44271D4353008960D5 /* CGSizeExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		29796F2C271D3EC4008960D5 /* ProgressHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29796F2F271D3EC4008960D5 /* ProgressHUDApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDApp.swift; sourceTree = "<group>"; };
-		29796F31271D3EC4008960D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29796F33271D3EC6008960D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29796F36271D3EC6008960D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29796F3D271D41AD008960D5 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDConfig.swift; sourceTree = "<group>"; };
+		29796F44271D4353008960D5 /* CGSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29796F43271D42BD008960D5 /* SwiftUIVisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,20 +57,22 @@
 		29796F2E271D3EC4008960D5 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				29796F46271D4594008960D5 /* Assets */,
+				29796F44271D4353008960D5 /* CGSizeExtension.swift */,
+				29796F3D271D41AD008960D5 /* ProgressHUD.swift */,
 				29796F2F271D3EC4008960D5 /* ProgressHUDApp.swift */,
-				29796F31271D3EC4008960D5 /* ContentView.swift */,
-				29796F33271D3EC6008960D5 /* Assets.xcassets */,
-				29796F35271D3EC6008960D5 /* Preview Content */,
+				29796F3F271D41FC008960D5 /* ProgressHUDConfig.swift */,
 			);
 			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
-		29796F35271D3EC6008960D5 /* Preview Content */ = {
+		29796F46271D4594008960D5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				29796F33271D3EC6008960D5 /* Assets.xcassets */,
 				29796F36271D3EC6008960D5 /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +91,9 @@
 			dependencies = (
 			);
 			name = ProgressHUD;
+			packageProductDependencies = (
+				29796F42271D42BD008960D5 /* SwiftUIVisualEffects */,
+			);
 			productName = ProgressHUD;
 			productReference = 29796F2C271D3EC4008960D5 /* ProgressHUD.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 29796F23271D3EC4008960D5;
+			packageReferences = (
+				29796F41271D42BD008960D5 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */,
+			);
 			productRefGroup = 29796F2D271D3EC4008960D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29796F32271D3EC4008960D5 /* ContentView.swift in Sources */,
 				29796F30271D3EC4008960D5 /* ProgressHUDApp.swift in Sources */,
+				29796F45271D4353008960D5 /* CGSizeExtension.swift in Sources */,
+				29796F40271D41FC008960D5 /* ProgressHUDConfig.swift in Sources */,
+				29796F3E271D41AD008960D5 /* ProgressHUD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +284,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ProgressHUD/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ProgressHUD/Assets\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -297,7 +313,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ProgressHUD/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ProgressHUD/Assets\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -341,6 +357,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29796F41271D42BD008960D5 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lucasbrown/swiftui-visual-effects";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29796F42271D42BD008960D5 /* SwiftUIVisualEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29796F41271D42BD008960D5 /* XCRemoteSwiftPackageReference "swiftui-visual-effects" */;
+			productName = SwiftUIVisualEffects;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29796F24271D3EC4008960D5 /* Project object */;
 }
