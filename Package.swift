@@ -21,8 +21,5 @@ let package = Package(
         .target(
             name: "progress-hud",
             dependencies: []),
-        .testTarget(
-            name: "progress-hudTests",
-            dependencies: ["progress-hud"]),
     ]
 )

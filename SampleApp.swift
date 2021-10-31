@@ -1,5 +1,5 @@
 //
-//  ProgressHUDApp.swift
+//  SampleApp.swift
 //  ProgressHUD
 //
 //  Created by Shogo Takeuchi on 2021/10/18.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct ProgressHUDApp: App {
+struct SampleApp: App {
 
     @State var hudVisible = true
     @State var hudConfig = ProgressHUDConfig(type: .loading)
