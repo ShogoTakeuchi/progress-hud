@@ -26,7 +26,7 @@ struct ProgressHUD: View {
                         Color.white
                         VStack(spacing: 16) {
                             if config.type == .loading {
-                                IndefiniteAnimatedView(
+                                AnimationView(
                                     animatedViewSize: config.imageViewSize,
                                     animatedViewForegroundColor: config.imageViewForegroundColor,
                                     lineWidth: config.lineWidth
@@ -96,7 +96,7 @@ struct ProgressHUD: View {
     }
 }
 
-private struct IndefiniteAnimatedView: View {
+private struct AnimationView: View {
     let animatedViewSize: CGSize
     let animatedViewForegroundColor: Color
     let lineWidth: CGFloat
