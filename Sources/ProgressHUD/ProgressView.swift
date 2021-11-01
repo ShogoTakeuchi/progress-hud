@@ -9,10 +9,15 @@ import SwiftUI
 
 public struct ProgressView: View {
 
-    @Binding var isVisible: Bool
-    var config: ProgressConfig
+    @Binding private var isVisible: Bool
+    private var config: ProgressConfig
 
-    var body: some View {
+    public init(isVisible: Binding<Bool>, config: ProgressConfig) {
+        self.isVisible = isVisible
+        self.config = config
+    }
+
+    public var body: some View {
         let hideTimer = Timer.publish(
             every: config.autoHideInterval,
             on: .main,
