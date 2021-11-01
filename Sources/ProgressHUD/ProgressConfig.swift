@@ -1,5 +1,5 @@
 //
-//  ProgressHUDConfig.swift
+//  ProgressConfig.swift
 //  ProgressHUD
 //
 //  Created by Shogo Takeuchi on 2021/10/18.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ProgressHUDConfig {
-    let type: ProgressHUDType
+struct ProgressConfig {
+    let type: ProgressType
     let title: String?
     let caption: String?
     let minSize: CGSize
@@ -32,7 +32,7 @@ struct ProgressHUDConfig {
     let errorImage: String
 
     public init(
-        type: ProgressHUDType = .loading,
+        type: ProgressType = .loading,
         title: String? = nil,
         caption: String? = nil,
         minSize: CGSize = CGSize(width: 60, height: 60),

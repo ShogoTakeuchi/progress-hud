@@ -11,11 +11,11 @@ import SwiftUI
 struct SampleApp: App {
 
     @State var hudVisible = true
-    @State var hudConfig = ProgressHUDConfig(type: .loading)
+    @State var hudConfig = ProgressConfig(type: .loading)
 
     var body: some Scene {
         WindowGroup {
-            ProgressHUD(isVisible: $hudVisible, config: hudConfig)
+            ProgressView(isVisible: $hudVisible, config: hudConfig)
         }
     }
 }

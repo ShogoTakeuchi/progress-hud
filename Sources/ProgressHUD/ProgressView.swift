@@ -1,5 +1,5 @@
 //
-//  ProgressHUD.swift
+//  ProgressView.swift
 //  ProgressHUD
 //
 //  Created by Shogo Takeuchi on 2021/10/18.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ProgressHUD: View {
+struct ProgressView: View {
 
     @Binding var isVisible: Bool
-    var config: ProgressHUDConfig
+    var config: ProgressConfig
 
     var body: some View {
         let hideTimer = Timer.publish(
@@ -80,7 +80,7 @@ struct ProgressHUD: View {
         }
     }
     
-    func generateHapticNotification(for type: ProgressHUDType) {
+    func generateHapticNotification(for type: ProgressType) {
         let generator = UINotificationFeedbackGenerator()
         generator.prepare()
         switch type {
@@ -128,7 +128,7 @@ private struct AnimationView: View {
 }
 
 private struct ImageView: View {
-    let type: ProgressHUDType
+    let type: ProgressType
     let imageViewSize: CGSize
     let imageViewForegroundColor: Color
     let successImage: String
