@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressConfig {
+public struct ProgressConfig {
     let type: ProgressType
     let title: String?
     let caption: String?

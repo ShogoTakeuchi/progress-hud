@@ -5,7 +5,7 @@
 //  Created by Shogo Takeuchi on 2021/10/18.
 //
 
-enum ProgressType {
+public enum ProgressType {
     case loading
     case success
     case warning

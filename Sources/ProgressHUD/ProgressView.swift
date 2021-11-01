@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressView: View {
+public struct ProgressView: View {
 
     @Binding var isVisible: Bool
     var config: ProgressConfig
