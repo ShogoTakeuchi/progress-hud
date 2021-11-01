@@ -13,7 +13,7 @@ public struct ProgressView: View {
     private var config: ProgressConfig
 
     public init(isVisible: Binding<Bool>, config: ProgressConfig) {
-        self.isVisible = isVisible
+        self._isVisible = isVisible
         self.config = config
     }
 
