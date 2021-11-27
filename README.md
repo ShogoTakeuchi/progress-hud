@@ -1,5 +1,9 @@
 # ProgressHUD
 
+[![GitHub license](https://img.shields.io/github/license/JonasGessner/JGProgressHUD-SwiftUI.svg)](https://github.com/JonasGessner/JGProgressHUD-SwiftUI.svg/blob/master/LICENSE.txt)
+[![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![Mac Catalyst compatible](https://img.shields.io/badge/Catalyst-compatible-brightgreen.svg)](https://developer.apple.com/documentation/xcode/creating_a_mac_version_of_your_ipad_app/)
+
 <img src="/documents/images/loading.png" width="160px"><img src="/documents/images/success.png" width="160px"><img src="/documents/images/warning.png" width="160px"><img src="/documents/images/error.png" width="160px">
 
 ## Requirements
