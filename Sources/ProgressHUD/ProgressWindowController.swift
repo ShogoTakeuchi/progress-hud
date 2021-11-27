@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UIKit
-import ProgressHUD
 
 class ProgressWindowController: UIHostingController<ProgressWindowView> {
 

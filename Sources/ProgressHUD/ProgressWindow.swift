@@ -5,7 +5,6 @@
 //  Created by Shogo Takeuchi on 2021/11/12.
 //
 
-import ProgressHUD
 import UIKit
 
 final public class ProgressWindow {
