@@ -17,7 +17,7 @@ final public class ProgressWindow {
         uiWindow = UIWindow(frame: UIScreen.main.bounds)
     }
 
-    func show(config: ProgressConfig) {
+    public func show(config: ProgressConfig) {
         let controller = ProgressWindowController(config: config)
         uiWindow.rootViewController = controller
         uiWindow.windowLevel = UIWindow.Level.normal + 1
@@ -36,7 +36,7 @@ final public class ProgressWindow {
     }
 
     @objc
-    func dismiss() {
+    public func dismiss() {
         uiWindow.isHidden = true
     }
 }
